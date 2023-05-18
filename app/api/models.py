@@ -1,6 +1,7 @@
 from datetime import datetime
 from sqlalchemy import Column, DateTime, Integer, String
-from app.database import database
+from app.database import Base as database
+
 
 class Client(database.Model):
     __tablename__ = "clients"

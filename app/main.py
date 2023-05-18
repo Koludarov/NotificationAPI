@@ -1,14 +1,13 @@
 from fastapi import FastAPI
 from app.database import database
 from app.tasks.celery import celery_app
-from api.routes import mailings, messages
+from app.api.routes import router
 
 
 app = FastAPI()
 
 
-app.include_router(mailings.router)
-app.include_router(messages.router)
+app.include_router(router)
 @app.on_event("startup")
 async def startup():
     await database.connect()
